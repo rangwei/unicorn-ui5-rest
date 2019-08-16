@@ -1,0 +1,53 @@
+<mvc:View
+	controllerName="sap.ui.demo.worklist.controller.Funding"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:titleHeading>
+			<Title
+				text="{/short_name}"
+				level="H2"/>
+		</semantic:titleHeading>
+
+		<semantic:headerContent>
+            <text text="{/valuation}"/>
+           <text text="{/date}"/>
+		</semantic:headerContent>
+
+<semantic:content>
+		
+        <IconTabBar
+				id="iconTabBar"
+				headerBackgroundDesign="Transparent"
+				class="sapUiResponsiveContentPadding"
+				>
+				<items>
+					<IconTabFilter id="infoTab" text="{i18n>Investors}" key="Info">
+						<mvc:XMLView viewName="sap.ui.demo.worklist.view.Investor"></mvc:XMLView>
+					</IconTabFilter>
+					<IconTabFilter id="projectsTab" text="{i18n>Lead Investors}" key="Projects">
+						<mvc:XMLView viewName="sap.ui.demo.worklist.view.LeadInvestor"></mvc:XMLView>
+					</IconTabFilter>
+					
+				</items>
+			</IconTabBar>
+    
+		</semantic:content>
+
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>

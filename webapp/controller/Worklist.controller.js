@@ -158,6 +158,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject : function (oItem) {
+			
 			this.getRouter().navTo("object", {
 				// objectId: oItem.getBindingContext().getProperty("ObjectID")
 				objectId: oItem.getBindingContext().getProperty("name")

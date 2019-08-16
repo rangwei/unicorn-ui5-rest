@@ -83,6 +83,11 @@
 					"pattern": "Objects/{objectId}",
 					"name": "object",
 					"target": ["object"]
+				},
+				{
+					"pattern": "Objects/{objectId}/{uuid}}",
+					"name": "funding",
+					"target": ["funding"]
 				}
 			],
 
@@ -106,6 +111,10 @@
 				"notFound": {
 					"viewName": "NotFound",
 					"viewId": "notFound"
+				},
+				"funding": {
+					"viewName": "Funding",
+					"viewId": "funding"
 				}
 			}
 		}

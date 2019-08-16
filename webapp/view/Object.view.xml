@@ -60,6 +60,7 @@
 						<items>
 							<ColumnListItem
 						type="Navigation"
+						press=".onPress"
 					>
 								<cells>
 						

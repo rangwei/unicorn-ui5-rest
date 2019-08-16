@@ -1,0 +1,15 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<List
+		items="{/investors}"
+		>
+		<items>
+			<ObjectListItem
+				title="{name}"
+				type="Active"
+				>
+
+			</ObjectListItem>
+		</items>
+	</List>
+</mvc:View>
+
