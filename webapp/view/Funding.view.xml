@@ -18,8 +18,8 @@
 		</semantic:titleHeading>
 
 		<semantic:headerContent>
-            <text text="{/valuation}"/>
-           <text text="{/date}"/>
+            
+           <Title text="{/valuation}, {/date}"/>
 		</semantic:headerContent>
 
 <semantic:content>
