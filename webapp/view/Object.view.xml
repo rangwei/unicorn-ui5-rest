@@ -1,0 +1,85 @@
+<mvc:View
+	controllerName="sap.ui.demo.worklist.controller.Object"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:titleHeading>
+			<Title
+				text="{/name}"
+				level="H2"/>
+		</semantic:titleHeading>
+
+		<semantic:headerContent>
+			<ObjectNumber
+				number="{
+					path: '/total_equity_funding'
+				}"
+				unit="USD"
+			/>
+		</semantic:headerContent>
+
+<semantic:content>
+			<Table id="table" width="auto" items="{
+					path: '/funding_rounds'
+				}" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished">
+
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" level="H3"/>
+								<ToolbarSpacer />
+								<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
+									<layoutData>
+										<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
+									</layoutData>
+								</SearchField>
+							</OverflowToolbar>
+						</headerToolbar>
+
+						<columns>
+							<Column id="name">
+								<Text text="{i18n>Name}"/>
+							</Column>
+							<Column id="valuation" demandPopin="false" minScreenWidth="Tablet">
+								<Text text="{i18n>Valuation}"/>
+							</Column>
+							<Column id="date">
+								<Text text="{i18n>Date}"/>
+							</Column>
+
+
+						</columns>
+
+						<items>
+							<ColumnListItem
+						type="Navigation"
+					>
+								<cells>
+						
+									
+									<Text text = "{short_name}"/>
+							
+									<Text text = "{valuation}"/>
+									<Text text = "{date}"/>
+
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>

@@ -1,0 +1,83 @@
+<mvc:View
+	controllerName="sap.ui.demo.worklist.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false">
+
+		<semantic:titleHeading>
+			<Title
+				text="{i18n>worklistTitle}"
+				level="H2"/>
+		</semantic:titleHeading>
+
+		<semantic:content>
+			<Table id="table" width="auto" items="{
+					path: '/entities'
+				}" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished">
+
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" level="H3"/>
+								<ToolbarSpacer />
+								<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
+									<layoutData>
+										<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
+									</layoutData>
+								</SearchField>
+							</OverflowToolbar>
+						</headerToolbar>
+
+						<columns>
+							<Column id="name">
+								<Text text="{i18n>Name}"/>
+							</Column>
+							<Column id="country" demandPopin="false" minScreenWidth="Tablet">
+								<Text text="{i18n>Country}"/>
+							</Column>
+							<Column id="last_funding_on">
+								<Text text="{i18n>Last funding on}"/>
+							</Column>
+							<Column id="total_funding">
+								<Text text="{i18n>Total Fundings}"/>
+							</Column>
+							<Column id="founded_on">
+								<Text text="{i18n>Founded on}"/>
+							</Column>
+							<Column id="category">
+								<Text text="{i18n>Category}"/>
+							</Column>
+
+						</columns>
+
+						<items>
+							<ColumnListItem
+						type="Navigation"
+						press=".onPress">
+								<cells>
+									<ObjectIdentifier title="{name}"/>
+									<Text text = "{country}"/>
+									<Text text = "{last_funding_on}"/>
+									<ObjectNumber unit="USD" number="{
+               path: 'total_equity_funding'}"/>
+									<Text text = "{founded_on}"/>
+									<Text text = "{category}"/>
+
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>
