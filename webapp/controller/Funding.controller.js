@@ -11,8 +11,7 @@ sap.ui.define([
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("funding").attachPatternMatched(this._onObjectMatched, this);
-            // alert(oRouter.oArgs.object);
-            // alert(oRouter.oEvent.object);
+
 			var oModel = new JSONModel();
             this.setModel(oModel);
             
@@ -28,7 +27,7 @@ sap.ui.define([
 
 			var oModel = this.getModel();
 
-			var url = "http://49.234.230.70:3000/unicorns/" + oArgs.objectId;
+			var url = "http://localhost:3000/unicorns/" + oArgs.objectId;
 	  
             var uuid = oArgs.uuid;
             
@@ -60,18 +59,18 @@ sap.ui.define([
                             {"name": item}
                         )
                     );
-                    // var investorModel = new JSONModel();
+                   
                     oModel.setProperty("/investors", investors);
-                    // oView.setModel(investorModel);
+                    
 
                     var leadInvestors =  funding.lead_investor.map(
                         item => (
                             {"name": item}
                         )
                     );
-                    // var leadModel = new JSONModel();
+                    
                     oModel.setProperty("/lead_investor", leadInvestors);
-                    // oView.setModel(leadModel);
+                    
 
 
 				}

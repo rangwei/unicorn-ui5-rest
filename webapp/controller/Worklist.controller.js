@@ -48,7 +48,7 @@ sap.ui.define([
 
 
 
-			var url = 'http://49.234.230.70:3000/unicorns/';
+			var url = 'http://localhost:3000/unicorns/';
       
 			$.ajax({
 				url: url,

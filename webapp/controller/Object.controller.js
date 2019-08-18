@@ -27,7 +27,7 @@ sap.ui.define([
 
 			var oModel = this.getModel();
 
-			var url = "http://49.234.230.70:3000/unicorns/" + oArgs.objectId;
+			var url = "http://localhost:3000/unicorns/" + oArgs.objectId;
 	  
 			
 			$.ajax({
