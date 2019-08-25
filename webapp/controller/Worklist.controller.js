@@ -43,24 +43,6 @@ sap.ui.define([
 			this.setModel(oViewModel, "worklistView");
 
 
-			var oModel = new JSONModel();
-			this.setModel(oModel);
-
-
-
-			var url = 'http://localhost:3000/unicorns/';
-      
-			$.ajax({
-				url: url,
-				type: "GET",
-				contentType: "application/json",
-				dataType: 'json',
-				success: function(data, textStatus, jqXHR) {
-					oModel.setData(data);
-					
-				}
-			});
-
 			// Make sure, busy indication is showing immediately so there is no
 			// break after the busy indication for loading the view's meta data is
 			// ended (see promise 'oWhenMetadataIsLoaded' in AppController)
@@ -161,7 +143,7 @@ sap.ui.define([
 			
 			this.getRouter().navTo("object", {
 				// objectId: oItem.getBindingContext().getProperty("ObjectID")
-				objectId: oItem.getBindingContext().getProperty("name")
+				objectId: oItem.getBindingContext("unicorns").getProperty("name")
 			});
 		},
 

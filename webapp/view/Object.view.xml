@@ -28,7 +28,7 @@
 
 <semantic:content>
 			<Table id="table" width="auto" items="{
-					path: '/funding_rounds'
+					path: 'fundings>/funding_rounds'
 				}" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished">
 
 						<headerToolbar>
@@ -65,10 +65,11 @@
 								<cells>
 						
 									
-									<Text text = "{short_name}"/>
-							
-									<Text text = "{valuation}"/>
-									<Text text = "{date}"/>
+									<Text text = "{fundings>short_name}"/>
+									
+									
+							<text text = "{fundings>valuation}"/>
+							<Text text = "{fundings>date}"/>
 
 								</cells>
 							</ColumnListItem>

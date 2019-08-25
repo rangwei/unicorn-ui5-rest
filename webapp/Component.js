@@ -2,8 +2,9 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"./model/models",
-	"./controller/ErrorHandler"
-], function (UIComponent, Device, models, ErrorHandler) {
+	"./controller/ErrorHandler",
+	"sap/ui/model/json/JSONModel"
+], function (UIComponent, Device, models, ErrorHandler, JSONModel) {
 	"use strict";
 
 	return UIComponent.extend("sap.ui.demo.worklist.Component", {
@@ -27,6 +28,22 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+
+			// set the business model
+			var oModel = new JSONModel();
+			this.setModel(oModel, "unicorns");
+
+			var url = 'http://localhost:3000/unicorns/';
+      
+			$.ajax({
+				url: url,
+				type: "GET",
+				contentType: "application/json",
+				dataType: 'json',
+				success: function(data, textStatus, jqXHR) {
+					oModel.setData(data);
+				}
+			});
 
 			// create the views based on the url/hash
 			this.getRouter().initialize();

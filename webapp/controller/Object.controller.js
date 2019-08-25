@@ -13,8 +13,12 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 
+			// var oModel = new JSONModel();
+			// this.setModel(oModel);
+
+			var oOwnerComponent = this.getOwnerComponent();
 			var oModel = new JSONModel();
-			this.setModel(oModel);
+			oOwnerComponent.setModel(oModel, "fundings");
 			
 		},
 
@@ -25,7 +29,7 @@ sap.ui.define([
 			oArgs = oEvent.getParameter("arguments");
 			oView = this.getView();
 
-			var oModel = this.getModel();
+			var oModel = this.getModel("fundings");
 
 			var url = "http://localhost:3000/unicorns/" + oArgs.objectId;
 	  
@@ -104,13 +108,13 @@ sap.ui.define([
 		_showObject : function (oItem) {
 			// this.getRouter().navTo("funding");
 
-			// alert(oItem.getBindingContext().getProperty("/name"));
+			//  alert(oItem.getBindingContext("fundings").getProperty("uuid"));
 
 			this.getRouter().navTo("funding", {
 
-				objectId: oItem.getBindingContext().getProperty("/name"),
+				objectId: oItem.getBindingContext("fundings").getProperty("/name"),
 				
-				uuid: oItem.getBindingContext().getProperty("uuid")
+				uuid: oItem.getBindingContext("fundings").getProperty("uuid")
 			});
 
 			

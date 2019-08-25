@@ -12,10 +12,9 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("funding").attachPatternMatched(this._onObjectMatched, this);
 
-			var oModel = new JSONModel();
-            this.setModel(oModel);
             
-            
+            var funding = new JSONModel();
+            this.setModel(funding);
             
 			
         },
@@ -23,26 +22,15 @@ sap.ui.define([
 
 			var oArgs, oView;
 			oArgs = oEvent.getParameter("arguments");
-			oView = this.getView();
-
-			var oModel = this.getModel();
-
-			var url = "http://localhost:3000/unicorns/" + oArgs.objectId;
-	  
-            var uuid = oArgs.uuid;
+            oView = this.getView();
             
-			$.ajax({
-				url: url,
-				type: "GET",
-				contentType: "application/json",
-				dataType: 'json',
-				success: function(data, textStatus, jqXHR) {
-                    oModel.setData(data);
-                    
-                    
-                    
+            var oModel = this.getModel();
 
-                    var fundings = oModel.getProperty('/funding_rounds');
+            var fModel = this.getModel("fundings");
+
+            var uuid = oArgs.uuid;
+
+            var fundings = fModel.getProperty('/funding_rounds');
                    
                     var funding = fundings.find(
                         item => 
@@ -70,11 +58,8 @@ sap.ui.define([
                     );
                     
                     oModel.setProperty("/lead_investor", leadInvestors);
-                    
 
 
-				}
-			});
 			
 		}
 	});
